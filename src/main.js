@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Buefy from 'buefy'
-import 'buefy/dist/buefy.css'
+//import 'buefy/dist/buefy.css'
+// Styles
+import '@/scss/main.scss';
 //import { library } from '@fortawesome/fontawesome-svg-core';
 //import VueRouter from 'vue-router'
 import App from './App.vue'
@@ -13,6 +15,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(fas);
 Vue.component('vue-fontawesome', FontAwesomeIcon);
+
+
 
 
 Vue.config.productionTip = false
