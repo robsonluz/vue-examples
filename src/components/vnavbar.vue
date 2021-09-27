@@ -2,7 +2,7 @@
     <div style="background-color: #AACCAA">
         <div class="container">
 
-            <b-navbar class="container" style="background-color: #AACCAA" :centered="true" :shadow="true">
+            <b-navbar style="background-color: #AACCAA" class="container" :centered="true" :shadow="true" :fixed-top="false" :transparent="true">
                 <template #brand>
                     <b-navbar-item tag="router-link" :to="{ path: '/' }">
                         <img
@@ -79,5 +79,5 @@ export default {
 
 <style>
   a.navbar-item {background:none!important; border-bottom: 3px solid #AACCAA}
-  a.navbar-item:hover {border-bottom: 3px solid #000000}
+
 </style>

@@ -84,6 +84,8 @@ $link-focus-border: $primary;
 .hr {
   background-color: #FF0000;
 }
+
+a.navbar-item:hover {border-bottom: 3px solid $primary}
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
