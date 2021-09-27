@@ -12,8 +12,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 // internal icons
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faJs, faVuejs } from "@fortawesome/free-brands-svg-icons";
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
-library.add(fas);
+library.add(fas, faJs, faVuejs);
 Vue.component('vue-fontawesome', FontAwesomeIcon);
 
 

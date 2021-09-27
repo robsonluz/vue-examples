@@ -1,9 +1,11 @@
 <template>
-  <div class="container is-widescreen">
+  <div class="container is-fluid">
 
     <v-nav-bar />
 
-    <router-view />
+    <div class="container">
+      <router-view />
+    </div>
 
     <v-footer-bar />
 

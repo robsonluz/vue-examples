@@ -1,48 +1,51 @@
 <template>
-    <div>
-        <b-navbar style="background-color: #FF0000">
-            <template #brand>
-                <b-navbar-item tag="router-link" :to="{ path: '/' }">
-                    <img
-                        src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-                        alt="Lightweight UI components for Vue.js based on Bulma"
-                    >
-                </b-navbar-item>
-            </template>
-            <template #start>
-                <b-navbar-item href="#/">
-                    Home
-                </b-navbar-item>
-                <b-navbar-item href="#/fundo">
-                    Imagem de fundo
-                </b-navbar-item>
-                <b-navbar-item href="#/carrousel-imagem-fundo">
-                    Carrousel/Fundo
-                </b-navbar-item>   
-                <b-navbar-item href="#/carrousel-imagem">
-                    Carrousel/Imagem
-                </b-navbar-item>                   
-                <b-navbar-item href="#/icones">
-                    Ícones
-                </b-navbar-item>                                    
-                <b-navbar-item href="#/contato">
-                    Contato
-                </b-navbar-item>
-            </template>
+    <div style="background-color: #AACCAA">
+        <div class="container">
 
-            <template #end>
-                <b-navbar-item tag="div">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Cadastro</strong>
-                        </a>
-                        <a class="button is-light" @click="isLoginModalActive = true">
-                            Login
-                        </a>
-                    </div>
-                </b-navbar-item>
-            </template>        
-        </b-navbar>
+            <b-navbar class="container" style="background-color: #AACCAA" :centered="true" :shadow="true">
+                <template #brand>
+                    <b-navbar-item tag="router-link" :to="{ path: '/' }">
+                        <img
+                            src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+                            alt="Lightweight UI components for Vue.js based on Bulma"
+                        >
+                    </b-navbar-item>
+                </template>
+                <template #start>
+                    <b-navbar-item href="#/">
+                        Home
+                    </b-navbar-item>
+                    <b-navbar-item href="#/fundo">
+                        Imagem de fundo
+                    </b-navbar-item>
+                    <b-navbar-item href="#/carrousel-imagem-fundo">
+                        Carrousel/Fundo
+                    </b-navbar-item>   
+                    <b-navbar-item href="#/carrousel-imagem">
+                        Carrousel/Imagem
+                    </b-navbar-item>                   
+                    <b-navbar-item href="#/icones">
+                        Ícones
+                    </b-navbar-item>                                    
+                    <b-navbar-item href="#/contato">
+                        Contato
+                    </b-navbar-item>
+                </template>
+
+                <template #end>
+                    <b-navbar-item tag="div">
+                        <div class="buttons">
+                            <a class="button is-primary">
+                                <strong>Cadastro</strong>
+                            </a>
+                            <a class="button is-light" @click="isLoginModalActive = true">
+                                Login
+                            </a>
+                        </div>
+                    </b-navbar-item>
+                </template>        
+            </b-navbar>
+        </div>
 
         <b-modal
             v-model="isLoginModalActive"
@@ -75,6 +78,6 @@ export default {
 </script>
 
 <style>
-  a.navbar-item {background:none!important; border-bottom: 3px solid #ffffff}
+  a.navbar-item {background:none!important; border-bottom: 3px solid #AACCAA}
   a.navbar-item:hover {border-bottom: 3px solid #000000}
 </style>
