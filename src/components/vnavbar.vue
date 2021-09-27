@@ -16,9 +16,12 @@
                 <b-navbar-item href="#/fundo">
                     Imagem de fundo
                 </b-navbar-item>
+                <b-navbar-item href="#/carrousel-imagem-fundo">
+                    Carrousel/Fundo
+                </b-navbar-item>   
                 <b-navbar-item href="#/carrousel-imagem">
                     Carrousel/Imagem
-                </b-navbar-item>   
+                </b-navbar-item>                   
                 <b-navbar-item href="#/icones">
                     Ícones
                 </b-navbar-item>                                    
