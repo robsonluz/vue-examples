@@ -11,13 +11,13 @@
 
     <b-icon
         pack="fas"
-        icon="user"
+        icon="cart-plus"
         size="is-small">
     </b-icon>
 
     <b-icon
         pack="fas"
-        icon="user"
+        icon="address-book"
         size="is-medium">
     </b-icon>    
 
@@ -35,7 +35,11 @@
 
 
     <hr>
-
+            <b-button
+                label="Finish"
+                type="is-primary"
+                icon-pack="fas"
+                icon-left="check" />
 
     <hr>
 

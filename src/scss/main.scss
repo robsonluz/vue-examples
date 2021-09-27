@@ -1,6 +1,8 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
+
+
 // Set your colors
 $primary: #2b9234;
 $primary-light: findLightColor($primary);
@@ -77,6 +79,10 @@ $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
+
+.hr {
+  background-color: #FF0000;
+}
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";

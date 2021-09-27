@@ -1,5 +1,18 @@
 <template>
   <footer class="footer">
+    <a href="https://www.facebook.com">
+      <b-icon
+        pack="fas"
+        icon="facebook"
+        size="is-small">
+      </b-icon>
+      teste
+    </a>
+    <b-icon
+        pack="fas"
+        icon="facebook"
+        size="is-small">
+      </b-icon>
     <div class="content has-text-centered">
       <p>
         Criado por

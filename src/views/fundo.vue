@@ -4,7 +4,7 @@
         <h1 class="title">Exemplo de imagens de fundo</h1>
     </section>
 
-    <section class="has-bg-img hero" :style="{ backgroundImage: 'url(' + require('@/assets/fundo.jpg') + ')' }">
+    <section class="hero" :style="{ height: '400px', backgroundImage: 'url(' + require('@/assets/fundo.jpg') + ')' }">
       <div class="hero-body">
         <p class="title has-text-white">
           Utilizando section hero com imagem de fundo

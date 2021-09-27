@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar>
+        <b-navbar style="background-color: #FF0000">
             <template #brand>
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
                     <img
@@ -70,3 +70,8 @@ export default {
     }
 }
 </script>
+
+<style>
+  a.navbar-item {background:none!important; border-bottom: 3px solid #ffffff}
+  a.navbar-item:hover {border-bottom: 3px solid #000000}
+</style>

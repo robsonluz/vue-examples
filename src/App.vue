@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container is-widescreen">
 
     <v-nav-bar />
 
