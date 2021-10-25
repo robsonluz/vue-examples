@@ -53,9 +53,9 @@
             }
         },
 
-        mounted() {
+        created() {
           var self = this;
-          this.axios.get('https://testedjango.robsonjoo.repl.co/api/duvidas/').then((response) => {
+          this.axios.get('duvidas/').then((response) => {
             self.duvidas = response.data;
           })
         }

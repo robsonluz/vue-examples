@@ -23,6 +23,8 @@ library.add(fas, faJs, faVuejs);
 Vue.component('vue-fontawesome', FontAwesomeIcon);
 
 Vue.use(VueAxios, axios);
+//colocar aqui a URL do seu backend
+Vue.axios.defaults.baseURL = "https://testedjango.robsonjoo.repl.co/api/";
 
 
 Vue.config.productionTip = false
