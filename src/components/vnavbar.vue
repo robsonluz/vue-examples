@@ -2,7 +2,7 @@
     <div style="background-color: #AACCAA">
         <div class="container">
 
-            <b-navbar style="background-color: #AACCAA" class="container" :centered="true" :shadow="true" :fixed-top="false" :transparent="true">
+            <b-navbar style="background-color: #AACCAA" class="container" :centered="true" :shadow="true" :fixed-top="false" :transparent="true" :spaced="false">
                 <template #brand>
                     <b-navbar-item tag="router-link" :to="{ path: '/' }">
                         <img
@@ -27,9 +27,13 @@
                     <b-navbar-item href="#/icones">
                         Ícones
                     </b-navbar-item>                                    
+                    <b-navbar-item href="#/duvidas-frequentes">
+                        Dúvidas frequentes
+                    </b-navbar-item>                      
                     <b-navbar-item href="#/contato">
                         Contato
                     </b-navbar-item>
+                  
                 </template>
 
                 <template #end>

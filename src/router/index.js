@@ -7,6 +7,7 @@ import Fundo from '@/views/fundo.vue';
 import CarrouselImagem from '@/views/carrousel-imagem.vue';
 import CarrouselImagemFundo from '@/views/carrousel-imagem-fundo.vue';
 import Icones from '@/views/icones.vue';
+import DuvidasFrequentes from '@/views/duvidas-frequentes.vue';
 
 const routes = [
     {
@@ -44,7 +45,13 @@ const routes = [
         name: 'Icones',
         component: Icones,
         meta: {  }
-    }             
+    },
+    {
+        path: '/duvidas-frequentes',
+        name: 'DuvidasFrequentes',
+        component: DuvidasFrequentes,
+        meta: {  }
+    },             
 ]
 
 Vue.use(VueRouter);
