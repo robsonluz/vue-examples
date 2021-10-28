@@ -81,7 +81,7 @@ export default {
             self.$emit('close');
 
             //Mostra a mensagem de sucesso
-            this.$buefy.dialog.alert('Cadastro realizado com sucesso!')
+            self.$buefy.dialog.alert('Cadastro realizado com sucesso!')
           })        
       }
     }  
