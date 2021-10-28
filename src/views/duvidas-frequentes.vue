@@ -48,17 +48,18 @@
         data() {
             return {
                 isOpen: 0,
-                duvidas: [
-                ]
+                duvidas: []
             }
         },
-
+        
         created() {
           var self = this;
           this.axios.get('duvidas/').then((response) => {
             self.duvidas = response.data;
           })
         }
+        
+        
         
     }
 </script>  

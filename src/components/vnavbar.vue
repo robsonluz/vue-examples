@@ -39,7 +39,7 @@
                 <template #end>
                     <b-navbar-item tag="div">
                         <div class="buttons">
-                            <a class="button is-primary">
+                            <a class="button is-primary" @click="isCadastroModalActive = true">
                                 <strong>Cadastro</strong>
                             </a>
                             <a class="button is-light" @click="isLoginModalActive = true">
@@ -62,21 +62,37 @@
             <template #default="props">
                 <modal-login @close="props.close"></modal-login>
             </template>
-        </b-modal>        
+        </b-modal>   
+
+        <b-modal
+            v-model="isCadastroModalActive"
+            has-modal-card
+            trap-focus
+            :destroy-on-hide="false"
+            aria-role="dialog"
+            aria-label="Cadastro"
+            aria-modal>
+            <template #default="props">
+                <modal-cadastro @close="props.close"></modal-cadastro>
+            </template>
+        </b-modal>                
     </div>
     
 </template>
 <script>
 import ModalLogin from './modal-login.vue'
+import ModalCadastro from './modal-cadastro.vue'
 
 export default {
     data(){
         return {
-            isLoginModalActive: false
+            isLoginModalActive: false,
+            isCadastroModalActive: false
         }
     },
     components: {
-        'modal-login': ModalLogin
+        'modal-login': ModalLogin,
+        'modal-cadastro': ModalCadastro
     }
 }
 </script>
