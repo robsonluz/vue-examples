@@ -26,7 +26,10 @@
                     </b-navbar-item>                   
                     <b-navbar-item href="#/icones">
                         Ícones
-                    </b-navbar-item>                                    
+                    </b-navbar-item>   
+                    <b-navbar-item href="#/filmes">
+                        Filmes
+                    </b-navbar-item>                                                      
                     <b-navbar-item href="#/duvidas-frequentes">
                         Dúvidas frequentes
                     </b-navbar-item>                      

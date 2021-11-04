@@ -8,6 +8,7 @@ import CarrouselImagem from '@/views/carrousel-imagem.vue';
 import CarrouselImagemFundo from '@/views/carrousel-imagem-fundo.vue';
 import Icones from '@/views/icones.vue';
 import DuvidasFrequentes from '@/views/duvidas-frequentes.vue';
+import Filmes from '@/views/filmes.vue';
 
 const routes = [
     {
@@ -51,7 +52,13 @@ const routes = [
         name: 'DuvidasFrequentes',
         component: DuvidasFrequentes,
         meta: {  }
-    },             
+    },  
+    {
+        path: '/filmes',
+        name: 'Filmes',
+        component: Filmes,
+        meta: {  }
+    },                
 ]
 
 Vue.use(VueRouter);
