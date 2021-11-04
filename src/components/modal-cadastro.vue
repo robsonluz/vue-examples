@@ -32,7 +32,18 @@
                         placeholder="Seu telefone para contato"
                         required>
                     </b-input>
-                </b-field>                 
+                </b-field> 
+
+                <b-field label="Cidade">
+                    <b-select v-model="usuario.cidade" placeholder="Selecione uma cidade" expanded="true">
+                        <option
+                            v-for="cidade in cidades"
+                            :value="cidade.id"
+                            :key="cidade.id">
+                            {{ cidade.nome }}
+                        </option>
+                    </b-select>
+                </b-field>                                
 
                 <b-field label="Senha">
                     <b-input
@@ -67,10 +78,19 @@ export default {
               nome: '',
               email: '',
               telefone: '',
-              senha: ''
-            }
+              senha: '',
+              cidade: null
+            },
+            cidades: []
         }
     },  
+    created() {
+      var self = this;
+      //Chama a api para criar o usuário
+      this.axios.get('cidades/').then((response) => {
+        self.cidades = response.data;
+      })  
+    },
     methods: {
       cadastrar() {
           var self = this;
