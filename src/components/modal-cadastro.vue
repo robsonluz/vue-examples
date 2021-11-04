@@ -86,7 +86,7 @@ export default {
     },  
     created() {
       var self = this;
-      //Chama a api para criar o usuário
+      //Chama a api para buscar as cidades
       this.axios.get('cidades/').then((response) => {
         self.cidades = response.data;
       })  
