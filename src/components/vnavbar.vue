@@ -40,67 +40,97 @@
                 </template>
 
                 <template #end>
-                    <b-navbar-item tag="div">
-                        <div class="buttons">
-                            <a class="button is-primary" @click="isCadastroModalActive = true">
-                                <strong>Cadastro</strong>
-                            </a>
-                            <a class="button is-light" @click="isLoginModalActive = true">
-                                Login
-                            </a>
-                        </div>
-                    </b-navbar-item>
+                    <template v-if="currentUser">
+                      <b-navbar-item tag="div">
+                          {{currentUser.username}}
+                      </b-navbar-item>  
+                      <b-navbar-item tag="div">
+                          <div class="buttons">
+                              <a class="button" @click="sair()">
+                                  <strong>Sair</strong>
+                              </a>
+                          </div>
+                      </b-navbar-item>                                        
+                    </template>
+                    <template v-else>
+                      <b-navbar-item tag="div">
+                          <div class="buttons">
+                              <a class="button is-primary" @click="entrarCadastrar()">
+                                  <strong>Entrar/Cadastrar</strong>
+                              </a>
+                          </div>
+                      </b-navbar-item>                      
+                    </template>
+
                 </template>        
             </b-navbar>
         </div>
-
-        <b-modal
-            v-model="isLoginModalActive"
-            has-modal-card
-            trap-focus
-            :destroy-on-hide="false"
-            aria-role="dialog"
-            aria-label="Login"
-            aria-modal>
-            <template #default="props">
-                <modal-login @close="props.close"></modal-login>
-            </template>
-        </b-modal>   
-
-        <b-modal
-            v-model="isCadastroModalActive"
-            has-modal-card
-            trap-focus
-            :destroy-on-hide="false"
-            aria-role="dialog"
-            aria-label="Cadastro"
-            aria-modal>
-            <template #default="props">
-                <modal-cadastro @close="props.close"></modal-cadastro>
-            </template>
-        </b-modal>                
+              
     </div>
     
 </template>
-<script>
-import ModalLogin from './modal-login.vue'
-import ModalCadastro from './modal-cadastro.vue'
-
-export default {
-    data(){
-        return {
-            isLoginModalActive: false,
-            isCadastroModalActive: false
-        }
-    },
-    components: {
-        'modal-login': ModalLogin,
-        'modal-cadastro': ModalCadastro
-    }
-}
-</script>
 
 <style>
   a.navbar-item {background:none!important; border-bottom: 3px solid #AACCAA}
-
 </style>
+
+<script>
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+export default {
+    computed: {
+      currentUser () {
+        return this.$store.getters.currentUser
+      }
+    },  
+    methods: {
+      entrarCadastrar() {
+        var provider = new GoogleAuthProvider();
+
+        var self = this;
+        const auth = getAuth();
+        signInWithPopup(auth, provider).then((result) => {
+            console.log(result.user);
+            var pass = result.user.uid;
+            var email = result.user.email;
+            console.log(email, pass);
+
+            const formData = new FormData();
+            formData.append('username', email);
+            formData.append('password', pass);
+            
+            self.axios.post('login/', formData).then((response) => {
+              console.log('resposta do login');
+              console.log('logado', response);
+              document.location.reload(true);
+              //self.duvidas = response.data;
+            }).catch(function (error) {
+              console.log('error', error);
+              if (error.response && error.response.data) {
+                var user = {
+                  username: email,
+                  password: pass
+                };
+                self.axios.post('user-registration/', user).then((responseUr) => {
+                  console.log(responseUr);
+                  self.axios.post('login/', formData).then((responseLogin) => {
+                    console.log('logado', responseLogin);
+                    document.location.reload(true);
+                  });
+                });
+              }
+              
+            });
+
+        }).catch((error) => {
+            console.log(error);
+        });
+      },
+      sair() {      
+        this.axios.get('logout/').then((responseLogout) => {
+          console.log('logout', responseLogout);
+          document.location.reload(true);
+        });
+      }
+    }
+}
+</script>

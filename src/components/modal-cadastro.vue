@@ -70,6 +70,8 @@
 </template>
 
 <script>
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+  
 export default {
     props: ['canCancel'],
     data(){
@@ -93,7 +95,22 @@ export default {
     },
     methods: {
       cadastrar() {
-          var self = this;
+          //var self = this;
+        const auth = getAuth();
+          createUserWithEmailAndPassword(auth, this.usuario.email, this.usuario.senha)
+            .then((userCredential) => {
+              // Signed in
+              var user = userCredential.user;
+              console.log(user);
+              // ...
+            })
+            .catch((error) => {
+              //var errorCode = error.code;
+              var errorMessage = error.message;
+              console.log(errorMessage);
+              // ..
+            });          
+            /*
           //Chama a api para criar o usuário
           this.axios.post('usuarios-create/', this.usuario).then((response) => {
             console.log(response);
@@ -102,7 +119,8 @@ export default {
 
             //Mostra a mensagem de sucesso
             self.$buefy.dialog.alert('Cadastro realizado com sucesso!')
-          })        
+          })      
+          */  
       }
     }  
 }
