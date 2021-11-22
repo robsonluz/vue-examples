@@ -10,6 +10,7 @@ import Icones from '@/views/icones.vue';
 import DuvidasFrequentes from '@/views/duvidas-frequentes.vue';
 import Filmes from '@/views/filmes.vue';
 import Cadastro from '@/views/cadastro.vue';
+import MeusPedidos from '@/views/meus-pedidos.vue';
 
 const routes = [
     {
@@ -65,7 +66,13 @@ const routes = [
         name: 'Cadastro',
         component: Cadastro,
         meta: {  }
-    },                    
+    },
+    {
+        path: '/meus-pedidos',
+        name: 'MeusPedidos',
+        component: MeusPedidos,
+        meta: {  }
+    },                        
 ]
 
 Vue.use(VueRouter);

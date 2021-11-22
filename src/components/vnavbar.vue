@@ -15,6 +15,7 @@
                     <b-navbar-item href="#/">
                         Home
                     </b-navbar-item>
+                    <!--
                     <b-navbar-item href="#/fundo">
                         Imagem de fundo
                     </b-navbar-item>
@@ -27,15 +28,18 @@
                     <b-navbar-item href="#/icones">
                         Ícones
                     </b-navbar-item>   
+                    -->
                     <b-navbar-item href="#/filmes">
                         Filmes
                     </b-navbar-item>                                                      
+
+                    <b-navbar-item v-if="currentUser" href="#/meus-pedidos">
+                        Meus pedidos
+                    </b-navbar-item>
+
                     <b-navbar-item href="#/duvidas-frequentes">
                         Dúvidas frequentes
                     </b-navbar-item>                      
-                    <b-navbar-item href="#/contato">
-                        Contato
-                    </b-navbar-item>
                   
                 </template>
 
@@ -101,8 +105,10 @@ export default {
             self.axios.post('login/', formData).then((response) => {
               console.log('resposta do login');
               console.log('logado', response);
-              document.location.reload(true);
-              //self.duvidas = response.data;
+              self.$store.dispatch('setCurrentUser', response.data);
+
+              //Aqui vai sua rota de cadastro
+              self.$router.push({ name: 'Cadastro', force:true, reload:true });
             }).catch(function (error) {
               console.log('error', error);
               if (error.response && error.response.data) {
@@ -114,7 +120,10 @@ export default {
                   console.log(responseUr);
                   self.axios.post('login/', formData).then((responseLogin) => {
                     console.log('logado', responseLogin);
-                    document.location.reload(true);
+                    self.$store.dispatch('setCurrentUser', responseLogin.data);
+                    
+                    //Aqui vai sua rota de cadastro
+                    self.$router.push({ name: 'Cadastro', force:true, reload:true });
                   });
                 });
               }
@@ -126,9 +135,11 @@ export default {
         });
       },
       sair() {      
+        var self = this;
         this.axios.get('logout/').then((responseLogout) => {
           console.log('logout', responseLogout);
-          document.location.reload(true);
+          self.$store.dispatch('setCurrentUser', null);
+          self.$router.push({ name: 'Home', force:true, reload:true });
         });
       }
     }
