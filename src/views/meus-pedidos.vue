@@ -39,27 +39,26 @@
         },
         
         created() {
-          var self = this;
-          this.axios.get('pedidos/').then((response) => {
-            self.pedidos = response.data;
-          })
+          this.loadPedidos();
         },
 
         methods: {
+          loadPedidos() {
+            var self = this;
+            this.axios.get('pedidos/').then((response) => {
+              console.log(response);
+              self.pedidos = response.data;
+            })
+
+          },
           removerCarrinho(item) {
             var self = this;
             //Chama a api para criar o usuário
             this.axios.delete(`item-pedido-create/${item.id}`, item).then((response) => {
               console.log(response);
-
               //Mostra a mensagem de sucesso
               self.$buefy.dialog.alert('Filme removido com sucesso!')
-              self.$router.go(self.$router.currentRoute)
-
-              self.$router.push({ name: 'MeusPedidos', force:true }, () => {
-                self.$router.app.refresh()
-              });
-              
+              self.loadPedidos();
             })            
           }
         }        

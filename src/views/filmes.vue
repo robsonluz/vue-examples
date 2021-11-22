@@ -8,7 +8,7 @@
             <h1 class="title">{{filme.titulo}}</h1>
             <img v-if="filme.fotoCapa" :src="filme.fotoCapa">
             <p>Valor: {{filme.valor}}</p>
-            <b-button type="is-primary" @click="adicionarCarrinho(filme)">Adicionar ao carrinho</b-button>
+            <b-button v-if="currentUser" type="is-primary" @click="adicionarCarrinho(filme)">Adicionar ao carrinho</b-button>
           </div>
       </div>
 
@@ -24,12 +24,18 @@
             }
         },
         
+        
         created() {
           var self = this;
           this.axios.get('filmes/').then((response) => {
             self.filmes = response.data;
           })
         },
+        computed: {
+          currentUser () {
+            return this.$store.getters.currentUser
+          }
+        },        
 
         methods: {
           adicionarCarrinho(filme) {
