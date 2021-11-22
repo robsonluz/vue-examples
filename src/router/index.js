@@ -9,6 +9,7 @@ import CarrouselImagemFundo from '@/views/carrousel-imagem-fundo.vue';
 import Icones from '@/views/icones.vue';
 import DuvidasFrequentes from '@/views/duvidas-frequentes.vue';
 import Filmes from '@/views/filmes.vue';
+import Cadastro from '@/views/cadastro.vue';
 
 const routes = [
     {
@@ -58,7 +59,13 @@ const routes = [
         name: 'Filmes',
         component: Filmes,
         meta: {  }
-    },                
+    },  
+    {
+        path: '/cadastro',
+        name: 'Cadastro',
+        component: Cadastro,
+        meta: {  }
+    },                    
 ]
 
 Vue.use(VueRouter);
