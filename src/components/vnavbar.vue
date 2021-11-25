@@ -98,9 +98,11 @@ export default {
           self.axios.get('currentusuario/').then((responseUsuario) => {
             console.log('usuario logado');
             console.log(responseUsuario.data);
+            //Coloque aqui a rota para quem já está cadastrado
             self.$router.push({ name: 'Home', force:true, reload:true });
           }).catch(function (error) {
             console.log('nao existe usuario cadastrado', error)
+            //Coloque aqui a sua rota de cadastro
             self.$router.push({ name: 'Cadastro', force:true, reload:true });
           })
         }
