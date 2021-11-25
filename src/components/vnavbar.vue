@@ -87,6 +87,24 @@ export default {
       }
     },  
     methods: {
+      posLogin(response) {
+        var self = this;
+        console.log('resposta do login');
+        console.log('logado', response);
+        var data = response.data;
+        if(data && data.id) {
+          self.$store.dispatch('setCurrentUser', data);
+
+          self.axios.get('currentusuario/').then((responseUsuario) => {
+            console.log('usuario logado');
+            console.log(responseUsuario.data);
+            self.$router.push({ name: 'Home', force:true, reload:true });
+          }).catch(function (error) {
+            console.log('nao existe usuario cadastrado', error)
+            self.$router.push({ name: 'Cadastro', force:true, reload:true });
+          })
+        }
+      },
       entrarCadastrar() {
         var provider = new GoogleAuthProvider();
 
@@ -103,12 +121,7 @@ export default {
             formData.append('password', pass);
             
             self.axios.post('login/', formData).then((response) => {
-              console.log('resposta do login');
-              console.log('logado', response);
-              self.$store.dispatch('setCurrentUser', response.data);
-
-              //Aqui vai sua rota de cadastro
-              self.$router.push({ name: 'Cadastro', force:true, reload:true });
+              self.posLogin(response);
             }).catch(function (error) {
               console.log('error', error);
               if (error.response && error.response.data) {
@@ -119,11 +132,7 @@ export default {
                 self.axios.post('user-registration/', user).then((responseUr) => {
                   console.log(responseUr);
                   self.axios.post('login/', formData).then((responseLogin) => {
-                    console.log('logado', responseLogin);
-                    self.$store.dispatch('setCurrentUser', responseLogin.data);
-                    
-                    //Aqui vai sua rota de cadastro
-                    self.$router.push({ name: 'Cadastro', force:true, reload:true });
+                    self.posLogin(responseLogin);
                   });
                 });
               }

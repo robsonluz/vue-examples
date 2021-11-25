@@ -9,7 +9,8 @@
                           type="email"
                           v-model="usuario.email"
                           placeholder="Seu e-mail"
-                          readonly="true">
+                          readonly="true"
+                          disabled>
                       </b-input>
                   </b-field>
 
